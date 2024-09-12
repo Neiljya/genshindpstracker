@@ -5,7 +5,7 @@ import cv2
 import numpy as np
 from datetime import datetime
 
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe' # tesseract directory 
 custom_tessdata_dir = r'trained_data'
 pytesseract.pytesseract.tessdata_dir_config = f'--tessdata-dir "{custom_tessdata_dir}"'
 
