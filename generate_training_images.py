@@ -1,10 +1,9 @@
 from PIL import Image, ImageDraw, ImageFont
 import os
 
-
-# Function to create synthetic images with custom text
-def create_synthetic_image(text, font_path, font_size, image_path):
+def create_image(text, font_path, font_size, image_path):
     font = ImageFont.truetype(font_path, font_size)
+    
     # Adjust the image size based on the text and font size
     text_bbox = font.getbbox(text)
     image_width = text_bbox[2] - text_bbox[0]
@@ -15,12 +14,15 @@ def create_synthetic_image(text, font_path, font_size, image_path):
     image.save(image_path)
 
 
-# Example usage
+# Run to generate training images
 if __name__ == "__main__":
+
+    ######### CONFIG ############
     font_path = 'font/zh-cn.ttf'
     font_size = 48
     output_dir = 'training_images'
-
+    #############################
+    
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
@@ -28,5 +30,5 @@ if __name__ == "__main__":
 
     for i, text in enumerate(texts):
         image_path = os.path.join(output_dir, f'training_image_{i}.png')
-        create_synthetic_image(text, font_path, font_size, image_path)
+        create_image(text, font_path, font_size, image_path)
         print(f"Generated image: {image_path}")
