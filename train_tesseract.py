@@ -1,9 +1,17 @@
 import os
 import subprocess
 
-# Paths
+"""
+This file trains tesseract on the generated images:
+- For each image, generate a .box file
+- Extract the character set (unicharset) from the .box files using `unicharset_extractor`
+- Generate necessary files for training
+- Generate shapetable using cntraining
+- Combine the trainnig data into a final tesseract file in `combine_tessdata`
+"""
+
 train_dir = 'training_images'
-tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe' # Tesseract's installation path
 
 def generate_box_files(image_dir):
     for image_file in os.listdir(image_dir):
